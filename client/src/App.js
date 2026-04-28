@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import API from "./api";
+import API from "./services/api";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
+import "./styles.css";
 
 function App() {
   const [todos, setTodos] = useState([]);
-  const [title, setTitle] = useState("");
 
   const fetchTodos = async () => {
     const res = await API.get("/todos");
@@ -14,54 +16,13 @@ function App() {
     fetchTodos();
   }, []);
 
-  const addTodo = async () => {
-    if (!title) return;
-
-    await API.post("/todos", { title });
-    setTitle("");
-    fetchTodos();
-  };
-
-  const toggleTodo = async (id) => {
-    await API.patch(`/todos/${id}/done`);
-    fetchTodos();
-  };
-
-  const deleteTodo = async (id) => {
-    await API.delete(`/todos/${id}`);
-    fetchTodos();
-  };
-
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="container">
       <h1>TODO App</h1>
 
-      <input
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="New todo"
-      />
-      <button onClick={addTodo}>Add</button>
+      <TodoForm fetchTodos={fetchTodos} />
 
-      <ul>
-        {todos.map(todo => (
-          <li key={todo._id}>
-            <span
-              onClick={() => toggleTodo(todo._id)}
-              style={{
-                textDecoration: todo.done ? "line-through" : "none",
-                cursor: "pointer"
-              }}
-            >
-              {todo.title}
-            </span>
-
-            <button onClick={() => deleteTodo(todo._id)}>
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      <TodoList todos={todos} fetchTodos={fetchTodos} />
     </div>
   );
 }
