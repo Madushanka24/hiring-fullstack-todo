@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+#  TODO App – Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend of the Fullstack TODO application, built using React.js.
+It provides a clean and responsive user interface for managing tasks via a RESTful backend API.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+##  Features
 
-### `npm start`
+* Display all TODO items
+* Add new TODOs (title + optional description)
+* Edit existing TODOs
+* Mark TODOs as completed/uncompleted
+* Delete TODOs
+* Visual distinction for completed tasks (faded + strikethrough)
+* Simple and modern SaaS-style UI
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+##  Tech Stack
 
-### `npm test`
+* React.js
+* Axios (API communication)
+* CSS (custom styling)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+##  Setup Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. Navigate to frontend folder
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+cd client
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+### 2. Install dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 3. Start the development server
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+The app will run on:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+http://localhost:3000
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+##  Backend Requirement
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This frontend depends on a running backend server.
 
-### Analyzing the Bundle Size
+Make sure your backend is running at:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+http://localhost:5000
+```
 
-### Making a Progressive Web App
+If your backend runs on a different URL, update the base URL in:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+src/services/api.js
+```
 
-### Advanced Configuration
+Example:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```js
+baseURL: "http://localhost:5000/api"
+```
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+##  API Integration
 
-### `npm run build` fails to minify
+The frontend communicates with the backend using the following endpoints:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* `GET /api/todos` → Fetch all TODOs
+* `POST /api/todos` → Create TODO
+* `PUT /api/todos/:id` → Update TODO
+* `PATCH /api/todos/:id/done` → Toggle done status
+* `DELETE /api/todos/:id` → Delete TODO
+
+---
+
+##  Assumptions
+
+* The backend API is already running and accessible
+* MongoDB is properly connected on the backend
+* Each TODO item follows the expected schema
+* Network requests succeed under normal conditions
+
+---
+
+##  Limitations
+
+* No authentication or user accounts
+* No persistent frontend state management (e.g., Redux)
+* No offline support
+* Basic error handling (can be improved with notifications/toasts)
+* No pagination or filtering for large datasets
+
+---
+
+##  Author
+
+Madushanka Sandaruwan
