@@ -43,4 +43,5 @@ export const toggleTodo = async (req, res) => {
 export const deleteTodo = async (req, res) => {
   await Todo.findByIdAndDelete(req.params.id);
   res.json({ message: "Deleted" });
+  
 };
