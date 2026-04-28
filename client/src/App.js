@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import API from "./services/api";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
-import "./styles.css";
+import "./Styles.css";
 
 function App() {
   const [todos, setTodos] = useState([]);
