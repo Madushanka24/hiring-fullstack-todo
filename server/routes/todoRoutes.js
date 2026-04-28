@@ -3,7 +3,7 @@ import {
     getTodos,
     createTodo, 
     updateTodo, 
-    toogleTodo, 
+    toggleTodo, 
     deleteTodo 
 } from '../controllers/todoController.js';  
 
